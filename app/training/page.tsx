@@ -64,12 +64,6 @@ export default async function TrainingPage() {
                 </div>
               </div>
 
-              <div className="rate-bar-row">
-                <div className="rate-track">
-                  <div className="rate-fill" style={{ width: `${rate}%` }} />
-                </div>
-              </div>
-
               <div className="week-grid">
                 {weeks.map((w) => (
                   <div key={w.weekNumber} className={"week-cell " + statusClass(w.status)}>
