@@ -24,8 +24,8 @@ const w = (...arr: Week[]): Week[] => {
 const influencers = [
   {
     code: "BYS202603A", name: "박지현", handle: "@dallstyle_designer", followers: 71000,
-    note: "김보연 취소", classSheet: "금저녁2.5", dailyMissionRate: 26,
-    weeks: w("무단지각", "결석", "지각"),
+    note: "김보연 취소", classSheet: "금저녁2.5", dailyMissionRate: 54,
+    weeks: w("무단지각", "결석", "지각", "결석", "출석", "출석"),
     posts: [
       { date: "2026-07-04", type: "릴스", summary: "발음 변화 + 할인코드 댓글", tag: "유", tone: "상", link: "https://www.instagram.com/reel/DaSnpd7hZVJ/" },
     ],
@@ -37,15 +37,15 @@ const influencers = [
   },
   {
     code: "BYS202603B", name: "김다은", handle: "@danjjing_keys", followers: 20000,
-    note: "", classSheet: "금오전2.5", dailyMissionRate: 25,
-    weeks: w("결석", "출석", "출석"),
+    note: "", classSheet: "금오전2.5", dailyMissionRate: 44,
+    weeks: w("결석", "출석", "출석", "출석", "출석", "출석"),
     posts: [] as any[],
     referrals: [] as any[],
   },
   {
     code: "BYS202603C", name: "고형우", handle: "@_hyoungwoo_", followers: 3630,
-    note: "", classSheet: "화오전3.0A", dailyMissionRate: 28,
-    weeks: w("출석", "출석", "출석", "출석"),
+    note: "", classSheet: "화오전3.0A", dailyMissionRate: 56,
+    weeks: w("출석", "출석", "출석", "출석", "출석", "출석"),
     posts: [
       { date: "2026-07-26", type: "릴스", summary: "트레이닝 영상 + 할인코드", tag: "유", tone: "상", link: "https://www.instagram.com/reel/DbOG2x3TysW/" },
     ],
@@ -53,15 +53,15 @@ const influencers = [
   },
   {
     code: "BYS202603E", name: "최은솔", handle: "@youth_is_yourss", followers: 32000,
-    note: "", classSheet: "월저녁3.0B", dailyMissionRate: 31,
-    weeks: w("출석", "출석", "출석", "무단지각"),
+    note: "", classSheet: "월저녁3.0B", dailyMissionRate: 54,
+    weeks: w("출석", "출석", "출석", "무단지각", "출석", "출석", "출석"),
     posts: [] as any[],
     referrals: [] as any[],
   },
   {
     code: "BYS202603F", name: "박은정", handle: "@evapark___", followers: 13000,
-    note: "", classSheet: "Tue 6.5 PM", dailyMissionRate: 31,
-    weeks: w("출석", "출석", "결석", "지각"), // 영어 트랙 (Attendance/Absence/Late Arrival 라벨)
+    note: "", classSheet: "Tue 6.5 PM", dailyMissionRate: 44,
+    weeks: w("출석", "출석", "결석", "지각", "지각", "출석"), // 영어 트랙 (Attendance/Absence/Late Arrival 라벨)
     posts: [
       { date: "2026-07-08", type: "스토리", summary: "BYS 할인코드 관련", tag: "유", tone: "상", link: null },
       { date: "2026-07-22", type: "스토리", summary: "트레이닝 영상", tag: "유", tone: "상", link: null },
@@ -73,8 +73,8 @@ const influencers = [
   },
   {
     code: "BYS202603G", name: "이수지", handle: "@1998_suji_ya", followers: 189000,
-    note: "바이오에 bys 추천코드", classSheet: "수오전 1.5", dailyMissionRate: 13,
-    weeks: w("출석", "결석", "출석", "출석"),
+    note: "바이오에 bys 추천코드", classSheet: "수오전 1.5", dailyMissionRate: 25,
+    weeks: w("출석", "결석", "상담완료", "출석", "출석", "출석"),
     posts: [
       { date: "2026-07-13", type: "릴스", summary: "그동안의 영어성장 + 할인코드", tag: "유", tone: "상", link: "https://www.instagram.com/reel/Dau9Cjpyd05/" },
       { date: "2026-07-30", type: "릴스", summary: "일상 기록 중 10시 영어수업 듣는장면 등장", tag: "무", tone: "상", link: "https://www.instagram.com/reel/DbZ_Bz7xCJF/" },
@@ -88,15 +88,16 @@ const influencers = [
   },
   {
     code: "BYS202603H", name: "이정연", handle: "@grami.___", followers: 2087,
-    note: "", classSheet: "금오전2.0", dailyMissionRate: 0,
-    weeks: w("지각", "결석", "출석", "결석"),
+    note: "6주차부터 녹화본 수강으로 전환 — 이후 출석률 집계 제외", classSheet: "금오전2.0", dailyMissionRate: 0,
+    // 3주차는 시트 파싱이 '상담완료'로 잡히지만 실제로는 '출석' — 직접 확인해주신 내용으로 정정
+    weeks: w("지각", "결석", "출석", "결석", "상담완료", "녹화본"),
     posts: [] as any[],
     referrals: [] as any[],
   },
   {
     code: "BYS202603I", name: "김지민", handle: "@mini_j0220", followers: 13000,
-    note: "", classSheet: "목오후1.5", dailyMissionRate: 30,
-    weeks: w("출석", "출석", "결석", "출석", "출석"),
+    note: "", classSheet: "목오후1.5", dailyMissionRate: 53,
+    weeks: w("출석", "출석", "결석", "출석", "출석", "출석"),
     posts: [
       { date: "2026-03-20", type: "릴스", summary: "영어인터뷰 후기", tag: "무", tone: "중", link: "https://www.instagram.com/reel/DWGyNprgYCw/" },
       { date: "2026-06-28", type: "릴스", summary: "트레이닝 모음", tag: "유", tone: "상", link: "https://www.instagram.com/reel/DaHzoEbx8D0/" },
@@ -120,14 +121,15 @@ const influencers = [
   {
     code: null, name: "채선혜", handle: "@chae_sh", followers: null,
     note: "추천인 제도 미참여", classSheet: "월저녁 2.0", dailyMissionRate: 2,
-    weeks: w("출석", "결석", "결석", "출석"),
+    // 2주차는 시트 파싱이 '상담완료'로 잡히지만 실제로는 '결석' — 직접 확인해주신 내용으로 정정
+    weeks: w("출석", "결석", "결석", "출석", "상담완료", "지각", "결석"),
     posts: [] as any[],
     referrals: [] as any[],
   },
   {
     code: null, name: "이은미", handle: "@lee_em", followers: null,
-    note: "추천인 제도 미참여", classSheet: "금오전2.5", dailyMissionRate: 25,
-    weeks: w("출석", "출석", "출석"),
+    note: "추천인 제도 미참여", classSheet: "금오전2.5", dailyMissionRate: 41,
+    weeks: w("출석", "출석", "출석", "결석", "출석", "출석"),
     posts: [] as any[],
     referrals: [] as any[],
   },

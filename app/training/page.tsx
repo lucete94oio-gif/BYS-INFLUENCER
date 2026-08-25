@@ -1,5 +1,7 @@
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 const ATTEND = new Set(["출석", "지각", "무단지각"]);
 
 function statusClass(status: string | null) {

@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { toggleOnboardingItem } from "./actions";
 
+export const dynamic = "force-dynamic";
+
 function initials(name: string) {
   return name.slice(0, 1);
 }

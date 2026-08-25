@@ -27,6 +27,7 @@ model Influencer {
   classSheet           String?   // 구글시트 상 반 탭 이름, 예: '금저녁2.5'
   trainingLastSyncedAt DateTime?
   dailyMissionRate     Int?      // 시트 '트레이닝 현황표' 총(일기/영상/위클리 미션 완료율, %) — 출석률과 별개 지표
+  attendanceTracked    Boolean   @default(true) // false면 출석률/결석률 집계에서 제외 (예: 녹화본 전환)
 
   posts        Post[]
   referrals    Referral[]
