@@ -119,7 +119,7 @@ const influencers = [
     ],
   },
   {
-    code: null, name: "채선혜", handle: "@chae_sh", followers: null,
+    code: null, name: "채선혜", handle: "@mindful_chae", followers: null,
     note: "추천인 제도 미참여", classSheet: "월저녁 2.0", dailyMissionRate: 2,
     // 2주차는 시트 파싱이 '상담완료'로 잡히지만 실제로는 '결석' — 직접 확인해주신 내용으로 정정
     weeks: w("출석", "결석", "결석", "출석", "상담완료", "지각", "결석"),
@@ -127,7 +127,7 @@ const influencers = [
     referrals: [] as any[],
   },
   {
-    code: null, name: "이은미", handle: "@lee_em", followers: null,
+    code: null, name: "이은미", handle: "@eunice_moment", followers: null,
     note: "추천인 제도 미참여", classSheet: "금오전2.5", dailyMissionRate: 41,
     weeks: w("출석", "출석", "출석", "결석", "출석", "출석"),
     posts: [] as any[],
