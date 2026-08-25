@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Influencer {
+  id        String   @id @default(cuid())
+  code      String?  @unique // 추천인 코드 — 추천인 제도 미참여자는 null (예: 채선혜, 이은미)
+  name      String
+  handle    String
+  followers Int?
+  note      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 02 온보딩 진행 — 등록 시 거치는 체크리스트 (편집 가능)
+  onboardingItems OnboardingItem[]
+
+  // 02 인플루언서 훈련률 및 결석률 — 본인이 BYS 수업을 실제로 듣는 수강생이기도 할 때, 그 수업 출석 현황
+  classSheet           String?   // 구글시트 상 반 탭 이름, 예: '금저녁2.5'
+  trainingLastSyncedAt DateTime?
+  dailyMissionRate     Int?      // 시트 '트레이닝 현황표' 총(일기/영상/위클리 미션 완료율, %) — 출석률과 별개 지표
+
+  posts        Post[]
+  referrals    Referral[]
+  documents    Document[]
+  trainingWeeks TrainingWeek[]
+}
+
+// 10주차 흐름을 그대로 보여주기 위한 주차별 출결 기록 (시트 구조 그대로)
+model TrainingWeek {
+  id           String     @id @default(cuid())
+  weekNumber   Int        // 1~10
+  status       String?    // 출석 / 결석 / 지각 / 무단지각 / 조퇴 / null(아직 안 옴)
+  influencer   Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  influencerId String
+
+  @@unique([influencerId, weekNumber])
+}
+
+model OnboardingItem {
+  id           String     @id @default(cuid())
+  label        String
+  done         Boolean    @default(false)
+  order        Int        @default(0)
+  influencer   Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  influencerId String
+}
+
+model Post {
+  id           String     @id @default(cuid())
+  date         DateTime
+  type         String // 릴스/스토리/캐러셀/피드
+  summary      String
+  tag          String // 유/무 (BYS 언급)
+  tone         String // 상/중/하
+  link         String?
+  influencer   Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  influencerId String
+}
+
+model Referral {
+  id           String     @id @default(cuid())
+  name         String
+  status       String // done / awaiting / pending / cancelled
+  cohort       String // 24기 / 25기 등 — 어느 기수로 신청했는지
+  createdAt    DateTime   @default(now())
+
+  // 보상 정산용 — 유입 수강생 본인의 수업 출석 (10주차 기준)
+  classSheet     String?
+  weeksAttended  Int       @default(0)
+  lastSyncedAt   DateTime?
+  rewardAmount   Int       @default(70000) // 1인당 보상액(원)
+
+  influencer   Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  influencerId String
+}
+
+model Document {
+  id           String      @id @default(cuid())
+  name         String
+  type         String
+  location     String
+  date         DateTime    @default(now())
+  influencer   Influencer? @relation(fields: [influencerId], references: [id], onDelete: SetNull)
+  influencerId String?
+}
